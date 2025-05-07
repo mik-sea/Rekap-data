@@ -26,6 +26,6 @@ class Admin extends CI_Controller {
 		$this->load->view('footer/footer');
 	}
 	public function login(){
-		$this->load->view('index');
+		$this->load->view('login');
 	}
 }

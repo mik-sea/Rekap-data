@@ -9,4 +9,12 @@ class Student extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('session');
     }
+
+    public function index(){
+        $data['page'] = "Student";
+        $model['students'] = $this->Student_model->getStudents();
+		$this->load->view('header/header',$data);
+		$this->load->view('students/index',$model);
+		$this->load->view('footer/footer');
+    }
 }
