@@ -20,8 +20,12 @@ class Admin extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('header/header');
+		$data['page'] = "Dashboard Admin";
+		$this->load->view('header/header',$data);
 		$this->load->view('dashboard');
 		$this->load->view('footer/footer');
+	}
+	public function login(){
+		$this->load->view('index');
 	}
 }
