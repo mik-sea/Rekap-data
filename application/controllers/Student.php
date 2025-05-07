@@ -17,4 +17,11 @@ class Student extends CI_Controller {
 		$this->load->view('students/index',$model);
 		$this->load->view('footer/footer');
     }
+    
+    public function add(){
+        $data['page'] = "Add Student";
+        $this->load->view('header/header',$data);
+		$this->load->view('students/add');
+		$this->load->view('footer/footer');
+    }
 }

@@ -45,8 +45,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?= $page == 'index'? 'active':'' ?>">
-                <a class="nav-link" href="index.html">
+            <li class="nav-item <?= $page == 'Dashboard Admin'? 'active':'' ?>">
+                <a class="nav-link" href="/rekapdata">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?= $page == 'Student' || $page == 'Add Student' ? 'active':'' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
                     aria-expanded="true" aria-controls="collapseFour">
                     <i class="fas fa-fw fa-cog"></i>
@@ -104,8 +104,8 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Mahasiswa</h6>
-                        <a class="collapse-item" href="student/index">Index</a>
-                        <a class="collapse-item" href="jalur/tambahdata.php">Tambah Data</a>
+                        <a class="collapse-item <?= $page == 'Student'? 'active':'' ?>" href="/rekapdata/student/index">Index</a>
+                        <a class="collapse-item <?= $page == 'Add Student'? 'active':'' ?>" href="/rekapdata/student/add">Tambah Data</a>
                     </div>
                 </div>
             </li>
