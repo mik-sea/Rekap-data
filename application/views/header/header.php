@@ -62,8 +62,8 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Jalur Masuk</h6>
-                        <a class="collapse-item" href="jalur/jalurmasuk.php">Index</a>
-                        <a class="collapse-item" href="jalur/tambahdata.php">Tambah Data</a>
+                        <a class="collapse-item" href="<?php echo site_url('admission-track/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?php echo site_url('admission-track/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>
@@ -76,8 +76,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Fakultas</h6>
-                        <a class="collapse-item" href="jalur/jalurmasuk.php">Index</a>
-                        <a class="collapse-item" href="jalur/tambahdata.php">Tambah Data</a>
+                        <a class="collapse-item" href="<?php echo site_url('faculty/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?php echo site_url('faculty/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>
@@ -90,8 +90,8 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Jurusan</h6>
-                        <a class="collapse-item" href="jalur/jalurmasuk.php">Index</a>
-                        <a class="collapse-item" href="jalur/tambahdata.php">Tambah Data</a>
+                        <a class="collapse-item" href="<?php echo site_url('major/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?php echo site_url('major/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>

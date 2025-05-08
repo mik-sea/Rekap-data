@@ -8,7 +8,7 @@
         <?php echo $this->session->flashdata('error'); ?>
     </div>
 <?php } ?>
-    <h1 class="h3 mb-4 text-gray-800">Data Fakultas</h1>
+    <h1 class="h3 mb-4 text-gray-800">Data Jalur Masuk</h1>
 
     <div class="card shadow mb-4">
         <div class="card-body">
@@ -17,7 +17,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Kode</th>
                             <th>Nama</th>
                             <th>Pilihan</th>
                         </tr>
@@ -25,16 +24,15 @@
                     <tbody>
                     <?php
                         $counter = 1;
-                        foreach($faculties as $faculty) {
+                        foreach($admission_tracks as $admission_track) {
                     ?>
                         <tr>
                             <td><?php echo $counter; ?></td>
-                            <td><?php echo $faculty->code; ?></td>
-                            <td><?php echo $faculty->name; ?></td>
+                            <td><?php echo $admission_track->name; ?></td>
                             <td>
-                                <a href="<?php echo site_url('faculty/edit/' . $faculty->id) ?>" class="btn btn-primary">Sunting</a>
-                                <?php echo form_open('faculty/delete'); ?>
-                                <input type="hidden" name="id" value="<?php echo $faculty->id; ?>">
+                                <a href="<?php echo site_url('admission-track/edit/' . $admission_track->id) ?>" class="btn btn-primary">Sunting</a>
+                                <?php echo form_open('admission-track/delete'); ?>
+                                <input type="hidden" name="id" value="<?php echo $admission_track->id; ?>">
                                 <button type="submit" class="btn btn-danger">Hapus</button>
                                 <?php echo form_close(); ?>
                             </td>

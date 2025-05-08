@@ -6,9 +6,15 @@ class Migration_Create_Students_Table extends CI_Migration {
     public function up() {
         $this->dbforge->add_field([
             'id' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'auto_increment' => TRUE
+            ],
+            'student_identification_number' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 8,
-                'null'       => FALSE
+                'null'       => FALSE,
+                'unique'     => TRUE
             ],
             'admission_track_id' => [
                 'type'       => 'INT',
@@ -28,13 +34,13 @@ class Migration_Create_Students_Table extends CI_Migration {
                 'unique'     => TRUE
             ],
             'faculty_id' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
+                'type'       => 'INT',
+                'constraint' => 11,
                 'null'       => FALSE
             ],
             'major_id' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
+                'type'       => 'INT',
+                'constraint' => 11,
                 'null'       => FALSE
             ],
             'location' => [

@@ -6,14 +6,20 @@ class Migration_Create_Majors_Table extends CI_Migration {
     public function up() {
         $this->dbforge->add_field([
             'id' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
-                'null'       => FALSE
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'auto_increment' => TRUE
             ],
             'faculty_id' => [
+                'type'       => 'INT',
+                'constraint' => 11,
+                'null'       => FALSE
+            ],
+            'code' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 10,
-                'null'       => FALSE
+                'null'       => FALSE,
+                'unique'     => TRUE
             ],
             'name' => [
                 'type'       => 'VARCHAR',

@@ -9,48 +9,60 @@ class Faculty_model extends CI_Model {
         $this->load->database();
     }
 
-    public function getFaculties() {
+    public function selectAll() {
         $this->db->select('*');
         $this->db->from($this->_table);
+        $this->db->order_by('id');
         
         $query = $this->db->get();
         return $query->result();
     }
 
-    public function createFaculty($data) {
+    public function insert($data) {
         $this->db->insert($this->_table, $data);
         
-        if ($this->db->affected_rows() > 0) {
-            return $this->db->insert_id();
+        $error = $this->db->error();
+        if (!empty($error['message'])) {
+            return FALSE;
         }
-        
-        return FALSE;
+
+        return TRUE;
     }
 
-    public function getFacultyById($id) {
+    public function select($id) {
         $this->db->select('*');
         $this->db->from($this->_table);
         $this->db->where('id', $id);
         $query = $this->db->get();
         
-        if ($query->num_rows() > 0) {
-            return $query->row();
+        if ($query->num_rows() <= 0) {
+            return NULL;
         }
         
-        return NULL;
+        return $query->row();
     }
 
-    public function updateFaculty($id, $data) {
+    public function update($id, $data) {
         $this->db->where('id', $id);
         $this->db->update($this->_table, $data);
         
-        return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+        $error = $this->db->error();
+        if (!empty($error['message'])) {
+            return FALSE;
+        }
+
+        return TRUE;
     }
 
-    public function deleteFaculty($id) {
+    public function delete($id) {
         $this->db->where('id', $id);
         $this->db->delete($this->_table);
         
-        return ($this->db->affected_rows() > 0) ? TRUE : FALSE;
+        $error = $this->db->error();
+        if (!empty($error['message'])) {
+            return FALSE;
+        }
+
+        return TRUE;
     }
 }
