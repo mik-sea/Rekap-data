@@ -24,8 +24,7 @@ class Migration_Create_Majors_Table extends CI_Migration {
             'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
-                'null'       => FALSE,
-                'unique'     => TRUE
+                'null'       => FALSE
             ]
         ]);
         $this->dbforge->add_key('id', TRUE);
