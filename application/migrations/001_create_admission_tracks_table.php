@@ -13,7 +13,8 @@ class Migration_Create_Admission_Tracks_Table extends CI_Migration {
             'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
-                'null'       => FALSE
+                'null'       => FALSE,
+                'unique'     => TRUE
             ]
         ]);
         $this->dbforge->add_key('id', TRUE);
