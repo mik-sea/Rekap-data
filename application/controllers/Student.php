@@ -26,6 +26,36 @@ class Student extends CI_Controller {
 		$this->load->view('students/index',$data);
 		$this->load->view('footer/footer');
     }
+
+    public function detail($id = false){
+        $row = $this->Student_model->select($id);
+        if (!$row) {
+            $this->session->set_flashdata('error', 'Data mahasiswa tidak ditemukan!');
+
+            redirect('student');
+
+            return;
+        }
+        $header['page'] = 'Sunting Data Mahasiswa';
+        $data['input_id'] = $id;
+        $data['input_student_identification_number'] = $row->student_identification_number;
+        $data['input_admission_track_id'] = $row->admission_track_id;
+        $data['input_major_id'] = $row->major_id;
+        $data['input_location'] = $row->location;
+        $data['input_class'] = $row->class;
+        $data['input_name'] = $row->name;
+        $data['input_place_of_birth'] = $row->place_of_birth;
+        $data['input_date_of_birth'] = $row->date_of_birth;
+        $data['input_religion'] = $row->religion;
+        $data['input_gender'] = $row->gender;
+        $data['input_profile_photo'] = $row->profile_photo;
+        $data['admission_tracks'] = $this->Admission_track_model->selectAll();
+        $data['majors'] = $this->Major_model->selectAll();
+
+        $this->load->view('header/header',$header);
+        $this->load->view('students/detail', $data);
+        $this->load->view('footer/footer');
+    }
     
     public function create(){
         $header['page'] = "Tambah Data Mahasiswa";
