@@ -7,16 +7,18 @@ class Admin extends CI_Controller {
         $this->load->model('Admission_track_model');
         $this->load->model('Faculty_model');
         $this->load->model('Major_model');
+        $this->load->model('Student_model');
     }
 
 	public function index() {
-		$data['page'] = "Dashboard Admin";
-		$model['admission_tracks'] = $this->Admission_track_model->selectAll();
-		$model['faculties'] = $this->Faculty_model->selectAll();
-		$model['majors'] = $this->Major_model->selectAll();
+		$header['page'] = "Dashboard Admin";
+		$data['admission_tracks'] = $this->Admission_track_model->selectAll();
+		$data['faculties'] = $this->Faculty_model->selectAll();
+		$data['majors'] = $this->Major_model->selectAll();
+		$data['students'] = $this->Student_model->selectAll();
 
-		$this->load->view('header/header',$data);
-		$this->load->view('dashboard', $model);
+		$this->load->view('header/header',$header);
+		$this->load->view('dashboard', $data);
 		$this->load->view('footer/footer');
 	}
 	

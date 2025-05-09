@@ -11,34 +11,35 @@ class Faculty extends CI_Controller {
     }
 
     public function index() {
-        $data['page'] = 'Data Fakultas';
-        $model['faculties'] = $this->Faculty_model->selectAll();
+        $header['page'] = 'Data Fakultas';
+        $data['faculties'] = $this->Faculty_model->selectAll();
 
-        $this->load->view('header/header',$data);
-        $this->load->view('faculties/index', $model);
+        $this->load->view('header/header',$header);
+        $this->load->view('faculties/index', $data);
         $this->load->view('footer/footer');
     }
 
     public function create() {
-        $data['page'] = 'Tambah Data Fakultas';
+        $header['page'] = 'Tambah Data Fakultas';
 
-        $this->load->view('header/header',$data);
+        $this->load->view('header/header',$header);
         $this->load->view('faculties/create');
         $this->load->view('footer/footer');
     }
 
     public function store() {
         $this->form_validation->set_rules('code', 'Code', 'required|max_length[10]|is_unique[faculties.code]');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]|is_unique[faculties.name]');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Fakultas';
-            $data['code'] = $this->input->post('code');
+            $header['page'] = 'Tambah Data Fakultas';
+            $data['input_code'] = $this->input->post('code');
             $data['input_name'] = $this->input->post('name');
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('faculties/create',$data);
             $this->load->view('footer/footer');
+
             return;
         }
 
@@ -61,16 +62,18 @@ class Faculty extends CI_Controller {
         $row = $this->Faculty_model->select($id);
         if (!$row) {
             $this->session->set_flashdata('error', 'Data fakultas tidak ditemukan!');
+
             redirect('faculty');
+
             return;
         }
         
-        $data['page'] = 'Sunting Data Fakultas';
-        $data['id'] = $id;
-        $data['code'] = $row->code;
+        $header['page'] = 'Sunting Data Fakultas';
+        $data['input_id'] = $id;
+        $data['input_code'] = $row->code;
         $data['input_name'] = $row->name;
 
-        $this->load->view('header/header',$data);
+        $this->load->view('header/header',$header);
         $this->load->view('faculties/edit', $data);
         $this->load->view('footer/footer');
     }
@@ -81,21 +84,22 @@ class Faculty extends CI_Controller {
         $row = $this->Faculty_model->select($id);
         if (!$row) {
             $this->session->set_flashdata('error', 'Data fakultas tidak ditemukan!');
+
             redirect('faculty');
+
             return;
         }
 
-        $validations = [];
         $this->form_validation->set_rules('code', 'Code', 'required|max_length[10]|callback_custom_unique[faculties.code.'.$id.']');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]|callback_custom_unique[faculties.name.'.$id.']');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Fakultas';
-            $data['id'] = $this->input->post('id');
-            $data['code'] = $this->input->post('code');
+            $header['page'] = 'Tambah Data Fakultas';
+            $data['input_id'] = $this->input->post('id');
+            $data['input_code'] = $this->input->post('code');
             $data['input_name'] = $this->input->post('name');
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('faculties/edit',$data);
             $this->load->view('footer/footer');
 
@@ -123,7 +127,9 @@ class Faculty extends CI_Controller {
         $row = $this->Faculty_model->select($id);
         if (!$row) {
             $this->session->set_flashdata('error', 'Data fakultas tidak ditemukan!');
+
             redirect('faculty');
+            
             return;
         }
 

@@ -1,11 +1,11 @@
 <div class="container-fluid">
 <?php if ($this->session->flashdata('success')) { ?>
     <div class="alert alert-success">
-        <?php echo $this->session->flashdata('success'); ?>
+        <?= $this->session->flashdata('success'); ?>
     </div>
 <?php } else if ($this->session->flashdata('error')) { ?>
     <div class="alert alert-danger">
-        <?php echo $this->session->flashdata('error'); ?>
+        <?= $this->session->flashdata('error'); ?>
     </div>
 <?php } ?>
 
@@ -15,15 +15,15 @@
                 <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Tambah Data Jalur Masuk</h1>
                 </div>
-                <?php echo form_open('admission-track/store', ['class' => 'user']); ?>
+                <?= form_open('admission-track/store', ['class' => 'user']); ?>
                     <div class="form-group">
-                        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Nama" value="<?php echo $input_name ?? ''; ?>">
-                        <strong class="text-danger"><?php echo form_error('name'); ?></strong>
+                        <input type="text" class="form-control form-control-user" id="name" name="name" placeholder="Nama" value="<?= $input_name ?? ''; ?>">
+                        <strong class="text-danger"><?= form_error('name'); ?></strong>
                     </div>
                     <button class="btn btn-primary btn-user btn-block">
                         Simpan
                     </button>
-                <?php echo form_close(); ?>
+                <?= form_close(); ?>
             </div>
         </div>
     </div>

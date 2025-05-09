@@ -21,18 +21,6 @@ class Migration_Create_Students_Table extends CI_Migration {
                 'constraint' => 11,
                 'null'       => FALSE
             ],
-            'diploma_number' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-                'null'       => FALSE,
-                'unique'     => TRUE
-            ],
-            'personal_identification_number' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-                'null'       => FALSE,
-                'unique'     => TRUE
-            ],
             'faculty_id' => [
                 'type'       => 'INT',
                 'constraint' => 11,
@@ -73,58 +61,11 @@ class Migration_Create_Students_Table extends CI_Migration {
                 'null'       => FALSE
             ],
             'religion' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'type'       => "ENUM('Islam','Kristen Protestan','Kristen Katolik','Hindu','Buddha','Konghucu')",
                 'null'       => FALSE
             ],
             'gender' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
-                'null'       => FALSE
-            ],
-            'national_identity' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null'       => FALSE
-            ],
-            'street' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
-                'null'       => FALSE
-            ],
-            'house_number' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
-                'null'       => FALSE
-            ],
-            'neighborhood_association' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
-                'null'       => FALSE
-            ],
-            'citizen_association' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 10,
-                'null'       => FALSE
-            ],
-            'city' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-                'null'       => FALSE
-            ],
-            'postcode' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 5,
-                'null'       => FALSE
-            ],
-            'phone_number' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 15,
-                'null'       => FALSE
-            ],
-            'email' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 255,
+                'type'       => "ENUM('Laki-laki','Perempuan')",
                 'null'       => FALSE
             ]
         ]);

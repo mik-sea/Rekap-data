@@ -1,11 +1,11 @@
 <div class="container-fluid">
 <?php if ($this->session->flashdata('success')) { ?>
     <div class="alert alert-success">
-        <?php echo $this->session->flashdata('success'); ?>
+        <?= $this->session->flashdata('success'); ?>
     </div>
 <?php } else if ($this->session->flashdata('error')) { ?>
     <div class="alert alert-danger">
-        <?php echo $this->session->flashdata('error'); ?>
+        <?= $this->session->flashdata('error'); ?>
     </div>
 <?php } ?>
     <h1 class="h3 mb-4 text-gray-800">Data Fakultas</h1>
@@ -28,15 +28,15 @@
                         foreach($faculties as $faculty) {
                     ?>
                         <tr>
-                            <td><?php echo $counter; ?></td>
-                            <td><?php echo $faculty->code; ?></td>
-                            <td><?php echo $faculty->name; ?></td>
+                            <td><?= $counter; ?></td>
+                            <td><?= $faculty->code; ?></td>
+                            <td><?= $faculty->name; ?></td>
                             <td>
-                                <a href="<?php echo site_url('faculty/edit/' . $faculty->id) ?>" class="btn btn-primary">Sunting</a>
-                                <?php echo form_open('faculty/delete'); ?>
-                                <input type="hidden" name="id" value="<?php echo $faculty->id; ?>">
+                                <a href="<?= site_url('faculty/edit/' . $faculty->id) ?>" class="btn btn-primary">Sunting</a>
+                                <?= form_open('faculty/delete'); ?>
+                                <input type="hidden" name="id" value="<?= $faculty->id; ?>">
                                 <button type="submit" class="btn btn-danger">Hapus</button>
-                                <?php echo form_close(); ?>
+                                <?= form_close(); ?>
                             </td>
                         </tr>
                     <?php

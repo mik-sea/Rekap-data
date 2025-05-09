@@ -19,7 +19,8 @@ class Migration_Create_Faculties_Table extends CI_Migration {
             'name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
-                'null'       => FALSE
+                'null'       => FALSE,
+                'unique'     => TRUE
             ]
         ]);
         $this->dbforge->add_key('id', TRUE);

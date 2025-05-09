@@ -18,38 +18,39 @@ class Major extends CI_Controller {
             $major->faculty_name = $faculty->name;
         }
 
-        $data['page'] = 'Data Jurusan';
-        $model['majors'] = $majors;
+        $header['page'] = 'Data Jurusan';
+        $data['majors'] = $majors;
 
-        $this->load->view('header/header',$data);
-        $this->load->view('majors/index', $model);
+        $this->load->view('header/header',$header);
+        $this->load->view('majors/index', $data);
         $this->load->view('footer/footer');
     }
 
     public function create() {
-        $data['page'] = 'Tambah Data Jurusan';
-        $model['faculties'] = $this->Faculty_model->selectAll();
+        $header['page'] = 'Tambah Data Jurusan';
+        $data['faculties'] = $this->Faculty_model->selectAll();
 
-        $this->load->view('header/header',$data);
-        $this->load->view('majors/create', $model);
+        $this->load->view('header/header',$header);
+        $this->load->view('majors/create', $data);
         $this->load->view('footer/footer');
     }
 
     public function store() {
         $this->form_validation->set_rules('faculty_id', 'Faculty ID', 'required|is_numeric');
         $this->form_validation->set_rules('code', 'Code', 'required|max_length[10]|is_unique[majors.code]');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]|is_unique[majors.name]');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Jurusan';
+            $header['page'] = 'Tambah Data Jurusan';
             $data['input_faculty_id'] = $this->input->post('faculty_id');
             $data['input_code'] = $this->input->post('code');
             $data['input_name'] = $this->input->post('name');
             $data['faculties'] = $this->Faculty_model->selectAll(); 
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('majors/create',$data);
             $this->load->view('footer/footer');
+
             return;
         }
 
@@ -79,14 +80,14 @@ class Major extends CI_Controller {
             return;
         }
         
-        $data['page'] = 'Sunting Data Jurusan';
+        $header['page'] = 'Sunting Data Jurusan';
         $data['input_id'] = $id;
         $data['input_faculty_id'] = $row->faculty_id;
         $data['input_code'] = $row->code;
         $data['input_name'] = $row->name;
         $data['faculties'] = $this->Faculty_model->selectAll();
 
-        $this->load->view('header/header',$data);
+        $this->load->view('header/header',$header);
         $this->load->view('majors/edit', $data);
         $this->load->view('footer/footer');
     }
@@ -105,17 +106,17 @@ class Major extends CI_Controller {
 
         $this->form_validation->set_rules('faculty_id', 'Faculty ID', 'required|is_numeric');
         $this->form_validation->set_rules('code', 'Code', 'required|max_length[10]|callback_custom_unique[majors.code.'.$id.']');
-        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]');
+        $this->form_validation->set_rules('name', 'Name', 'required|max_length[100]|callback_custom_unique[majors.name.'.$id.']');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Jurusan';
+            $header['page'] = 'Tambah Data Jurusan';
             $data['input_id'] = $this->input->post('id');
             $data['input_faculty_id'] = $this->input->post('faculty_id');
             $data['input_code'] = $this->input->post('code');
             $data['input_name'] = $this->input->post('name');
             $data['faculties'] = $this->Faculty_model->selectAll();
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('majors/edit',$data);
             $this->load->view('footer/footer');
             

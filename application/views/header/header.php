@@ -23,6 +23,12 @@
     <!-- Custom styles for this page -->
     <link href="/rekapdata/assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Date Picker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body id="page-top">
@@ -62,8 +68,8 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Jalur Masuk</h6>
-                        <a class="collapse-item" href="<?php echo site_url('admission-track/index'); ?>">Index</a>
-                        <a class="collapse-item" href="<?php echo site_url('admission-track/create'); ?>">Tambah Data</a>
+                        <a class="collapse-item" href="<?= site_url('admission-track/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?= site_url('admission-track/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>
@@ -76,8 +82,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Fakultas</h6>
-                        <a class="collapse-item" href="<?php echo site_url('faculty/index'); ?>">Index</a>
-                        <a class="collapse-item" href="<?php echo site_url('faculty/create'); ?>">Tambah Data</a>
+                        <a class="collapse-item" href="<?= site_url('faculty/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?= site_url('faculty/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>
@@ -90,8 +96,8 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Jurusan</h6>
-                        <a class="collapse-item" href="<?php echo site_url('major/index'); ?>">Index</a>
-                        <a class="collapse-item" href="<?php echo site_url('major/create'); ?>">Tambah Data</a>
+                        <a class="collapse-item" href="<?= site_url('major/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?= site_url('major/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>
@@ -104,8 +110,8 @@
                 <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Mahasiswa</h6>
-                        <a class="collapse-item <?= $page == 'Student'? 'active':'' ?>" href="/rekapdata/student/index">Index</a>
-                        <a class="collapse-item <?= $page == 'Add Student'? 'active':'' ?>" href="/rekapdata/student/add">Tambah Data</a>
+                        <a class="collapse-item" href="<?= site_url('student/index'); ?>">Index</a>
+                        <a class="collapse-item" href="<?= site_url('student/create'); ?>">Tambah Data</a>
                     </div>
                 </div>
             </li>

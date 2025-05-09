@@ -11,18 +11,18 @@ class Admission_track extends CI_Controller {
     }
 
     public function index() {
-        $data['page'] = 'Data Jalur Masuk';
-        $model['admission_tracks'] = $this->Admission_track_model->selectAll();
+        $header['page'] = 'Data Jalur Masuk';
+        $data['admission_tracks'] = $this->Admission_track_model->selectAll();
 
-        $this->load->view('header/header',$data);
-        $this->load->view('admission-tracks/index', $model);
+        $this->load->view('header/header',$header);
+        $this->load->view('admission-tracks/index', $data);
         $this->load->view('footer/footer');
     }
 
     public function create() {
-        $data['page'] = 'Tambah Data Jalur Masuk';
+        $header['page'] = 'Tambah Data Jalur Masuk';
 
-        $this->load->view('header/header',$data);
+        $this->load->view('header/header',$header);
         $this->load->view('admission-tracks/create');
         $this->load->view('footer/footer');
     }
@@ -31,12 +31,13 @@ class Admission_track extends CI_Controller {
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]|is_unique[admission_tracks.name]');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Jalur Masuk';
+            $header['page'] = 'Tambah Data Jalur Masuk';
             $data['input_name'] = $this->input->post('name');
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('admission-tracks/create',$data);
             $this->load->view('footer/footer');
+
             return;
         }
 
@@ -64,11 +65,11 @@ class Admission_track extends CI_Controller {
             return;
         }
         
-        $data['page'] = 'Sunting Data Jalur Masuk';
-        $data['id'] = $id;
+        $header['page'] = 'Sunting Data Jalur Masuk';
+        $data['input_id'] = $id;
         $data['input_name'] = $row->name;
 
-        $this->load->view('header/header',$data);
+        $this->load->view('header/header',$header);
         $this->load->view('admission-tracks/edit', $data);
         $this->load->view('footer/footer');
     }
@@ -88,11 +89,11 @@ class Admission_track extends CI_Controller {
         $this->form_validation->set_rules('name', 'Name', 'required|max_length[50]|callback_custom_unique[admission_tracks.name.'.$id.']');
 
         if ($this->form_validation->run() === FALSE) {
-            $data['page'] = 'Tambah Data Jalur Masuk';
-            $data['id'] = $this->input->post('id');
+            $header['page'] = 'Tambah Data Jalur Masuk';
+            $data['input_id'] = $this->input->post('id');
             $data['input_name'] = $this->input->post('name');
 
-            $this->load->view('header/header', $data);
+            $this->load->view('header/header', $header);
             $this->load->view('admission-tracks/edit',$data);
             $this->load->view('footer/footer');
             
@@ -121,7 +122,7 @@ class Admission_track extends CI_Controller {
             $this->session->set_flashdata('error', 'Data jalur masuk tidak ditemukan!');
 
             redirect('admission-track');
-
+            
             return;
         }
 
